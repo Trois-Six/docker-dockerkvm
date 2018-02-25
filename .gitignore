@@ -1,0 +1,3 @@
+docker/kvm.*
+vm/kvm.*
+*.swp
