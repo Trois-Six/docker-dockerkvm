@@ -1,18 +1,5 @@
 #!/bin/bash
 
-#
-# $1 is APT_CACHER (http://127.0.0.1:3142)
-# $2 is DISTRIB (burster)
-#
-
-APT_CACHER=$1
-DISTRIB=$2
-
-
-#
-# Initramfs
-#
-
 sed -i 's/^MODULES=most/MODULES=list/' /etc/initramfs-tools/initramfs.conf
 cat > /etc/initramfs-tools/modules << __EOF__
 virtio

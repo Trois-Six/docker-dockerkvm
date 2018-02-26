@@ -1,3 +1,2 @@
-docker/kvm.*
-vm/kvm.*
 *.swp
+asciinema/session.json

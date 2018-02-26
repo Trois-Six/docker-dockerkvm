@@ -1,7 +1,6 @@
 #!/bin/bash
 
-cdr2mask ()
-{
+cdr2mask () {
     set -- $(( 5 - ($1 / 8) )) 255 255 255 255 $(( (255 << (8 - ($1 % 8))) & 255 )) 0 0 0
     [ $1 -gt 1 ] && shift $1 || shift
     echo ${1-0}.${2-0}.${3-0}.${4-0}
@@ -77,8 +76,8 @@ exec /usr/bin/qemu-system-x86_64 \
     -object rng-random,id=objrng0,filename=/dev/urandom \
     -realtime mlock=off \
     -rtc base=utc,driftfix=slew \
-    -kernel /var/lib/kvm/kvm.vmlinuz \
-    -initrd /var/lib/kvm/kvm.initrd \
-    -append "init=/bin/bash root=root9p rootfstype=9p rootflags=trans=virtio rw console=ttyS0 quiet fsck.mode=skip cgroup_enable=memory swapaccount=1 vsyscall=emulate tsc=reliable no_timer_check noreplace-smp rcupdate.rcu_expedited=1 clocksource=kvm-clock iommu=false pci=lastbus=0 ip=${IPCMD}${RESOLV_STR}" \
+    -kernel /vmlinuz \
+    -initrd /initrd.img \
+    -append "init=/bin/bash root=root9p rootfstype=9p rootflags=trans=virtio rw console=ttyS0 quiet fsck.mode=skip cgroup_enable=memory swapaccount=1 vsyscall=emulate tsc=reliable no_timer_check noreplace-smp rcupdate.rcu_expedited=1 clocksource=kvm-clock iommu=false pci=lastbus=0 noresume ip=${IPCMD}${RESOLV_STR}" \
     3<>/dev/macvtap${RANDOM_ID}
 
