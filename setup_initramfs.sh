@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo RESUME=no > /etc/initramfs-tools/conf.d/resume
 sed -i 's/^MODULES=most/MODULES=list/' /etc/initramfs-tools/initramfs.conf
 cat > /etc/initramfs-tools/modules << __EOF__
 virtio

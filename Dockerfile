@@ -5,14 +5,14 @@ RUN chmod u+x /usr/local/bin/setup_initramfs.sh
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y qemu-kvm iproute2 ovmf curl apt-transport-https ca-certificates cgroupfs-mount gnupg initramfs-tools linux-image-amd64 linux-headers-amd64 qemu-utils e2fsprogs && \
-    /usr/local/bin/setup_initramfs.sh && \
-    update-initramfs -k all -u && \
     curl -qs https://download.docker.com/linux/debian/gpg | apt-key add - && \
     echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" > /etc/apt/sources.list.d/docker.list && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce && \
     mkdir -p /etc/docker && \
     echo "{\n    \"bridge\": \"none\",\n    \"iptables\": false\n}" > /etc/docker/daemon.json && \
+    /usr/local/bin/setup_initramfs.sh && \
+    update-initramfs -k all -u && \
     apt-get clean && \
     find /var/lib/apt/lists /tmp -maxdepth 1 -mindepth 1 -print0 2>/dev/null | xargs -r0 rm -rf
     
