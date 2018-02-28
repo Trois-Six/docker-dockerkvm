@@ -13,6 +13,8 @@ Heavily based on https://github.com/BBVA/kvm.
     docker run -dt -e VMDOCKER_IMG=httpd -p 8080:80 --privileged dockerkvm:buster
     docker run -dt -e VMDOCKER_IMG=httpd -e VMDOCKER_ENV="-e VIRTUALHOST=test" -p 8080:80 --privileged dockerkvm:buster
 
+[![asciicast](https://asciinema.org/a/25kxINRaLYyS7Uys2tT8eH9U4.png)](https://asciinema.org/a/25kxINRaLYyS7Uys2tT8eH9U4)
+
 ## Create asciicast gif
     LANG=C
     script -ttimings
@@ -26,6 +28,7 @@ Heavily based on https://github.com/BBVA/kvm.
     # modify docker-dockerkvm/asciinema/session.tsq to prettify video
     # test results with `reseq docker-dockerkvm/asciinema/session.tsq --replay`
     rm -f timings typescript docker-dockerkvm/asciinema/session.json
-    asciinema rec -c 'reseq docker-dockerkvm/asciinema/session.tsq --replay' docker-dockerkvm/asciinema/session.json
-    docker pull asciinema/asciicast2gif
-    docker run --rm -v $PWD:/data asciinema/asciicast2gif -t monokai docker-dockerkvm/asciinema/session.json docker-dockerkvm/asciinema/session.gif
+    asciinema rec -c 'reseq docker-dockerkvm/asciinema/session.tsq --replay' -t "docker in kvm in docker"
+    #asciinema rec -c 'reseq docker-dockerkvm/asciinema/session.tsq --replay' docker-dockerkvm/asciinema/session.json
+    #docker pull asciinema/asciicast2gif
+    #docker run --rm -v $PWD:/data asciinema/asciicast2gif -t monokai docker-dockerkvm/asciinema/session.json docker-dockerkvm/asciinema/session.gif
