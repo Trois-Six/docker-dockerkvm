@@ -5,8 +5,7 @@ Heavily based on https://github.com/BBVA/kvm.
 
 ## Build
     git clone https://github.com/Trois-Six/docker-dockerkvm.git
-    cd docker-dockerkvm
-    docker build -t dockerkvm:buster .
+    docker build -t dockerkvm:buster docker-dockerkvm
 
 ## Run
     docker run -it -e VM_CPU=1 -e VM_RAM=256 -e VMDOCKER_IMG=httpd -e VMDOCKER_ENV="-e VIRTUALHOST=test" -p 8080:80 --privileged dockerkvm:buster
