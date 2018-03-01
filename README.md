@@ -1,6 +1,8 @@
 docker-dockerkvm
 ===============
 
+![Logo](https://raw.githubusercontent.com/Trois-Six/docker-dockerkvm/master/logo.png)
+
 Heavily based on https://github.com/BBVA/kvm.
 
 ## Build
